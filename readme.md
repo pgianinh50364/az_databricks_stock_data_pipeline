@@ -1,4 +1,6 @@
-# Stock Data Analytics Platform ## 🚀 Key Features
+# Stock Data Analytics Platform 
+
+## 🚀 Key Features
 
 ### �📊 Data Pipeline Architecture
 - **Medallion Architecture**: Bronze → Silver → Gold data layers using Delta Live Tables
@@ -26,7 +28,7 @@
 4. **Gold Layer**: Business-ready aggregations and analytics datasets
 5. **Storage Optimization**: Delta Lake format with auto-compaction and Z-ordering
 
-## 🎯 Project Featuresative data engineering solution** built on Azure that processes and analyzes stock market data using Databricks Delta Live Tables and modern data lakehouse architecture.tock Data Streaming & Analytics Platform �
+## 🎯 Data engineering solution built on Azure that processes and analyzes stock market data using Databricks Delta Live Tables (Lakeflow Declarative Pipeline)
 
 A comprehensive **Azure-based data engineering solution** that ingests, processes, and analyzes stock market data using modern data pipeline technologies including Kafka, Databricks, and Delta Lake.
 
