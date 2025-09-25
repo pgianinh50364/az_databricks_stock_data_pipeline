@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    Databricks_setup:
+      name: databricks_setup
+      tasks:
+        - task_key: workspace-config
+          notebook_task:
+            notebook_path: ../src/notebook/Setup.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: STANDARD

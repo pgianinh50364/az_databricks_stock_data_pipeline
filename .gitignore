@@ -1,0 +1,56 @@
+# ===================================
+# SECURITY: Sensitive Configuration Files
+# ===================================
+# Local configuration files with IPs, secrets, etc.
+config/config.local.json
+config/*.local.json
+config/*local*
+*.local.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.venv/
+
+# IP address and network configuration backups
+*_ip_backup*
+*network_config*
+
+# Terraform state files (may contain sensitive data)
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform/
+terraform/*.tfvars
+
+# Databricks configuration (may contain tokens)
+.databricks/
+*.databricks
+
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+
+# Misc.
+databricks/
+uv.lock

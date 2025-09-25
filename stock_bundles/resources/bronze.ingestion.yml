@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    bronze_ingestion:
+      name: bronze_ingestion
+      tasks:
+        - task_key: ticker_loader
+          notebook_task:
+            notebook_path: ../src/notebook/stock_name.ipynb
+            source: WORKSPACE
+        - task_key: incremental_loader
+          depends_on:
+            - task_key: ticker_loader
+          for_each_task:
+            inputs: "{{tasks.ticker_loader.values.output_key}}"
+            task:
+              task_key: incremental_loader_iteration
+              notebook_task:
+                notebook_path: ../src/notebook/bronze_ingestion.ipynb
+                base_parameters:
+                  ticker: "{{input.ticker}}"
+                source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: STANDARD

@@ -1,0 +1,43 @@
+# This is a Databricks asset bundle definition for stock_bundles.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: stock_bundles
+  uuid: 96c3405a-409e-49f1-9abd-f08b45103dd5
+
+artifacts:
+  python_artifact:
+    type: whl
+    build: uv build --wheel
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+
+targets:
+  dev:
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    # IMPORTANT: Edit the host to your own Databricks workspace URL.
+    presets:
+      name_prefix: "${workspace.current_user.short_name}_test_dev_"
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-1302389120332807.7.azuredatabricks.net
+    permissions:
+      - level: CAN_MANAGE
+        user_name: "${workspace.current_user.userName}"
+
+  prod:
+    presets:
+      name_prefix: "${workspace.current_user.short_name}_deploy_prod_"
+    mode: production
+    workspace:
+      host: https://adb-1302389120332807.7.azuredatabricks.net
+      # We explicitly deploy to the current user's workspace path
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - level: CAN_MANAGE
+        user_name: "${workspace.current_user.userName}"

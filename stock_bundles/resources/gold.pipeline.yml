@@ -1,0 +1,14 @@
+resources:
+  pipelines:
+    pipeline_gold_run:
+      name: gold_run
+      libraries:
+        - glob:
+            include: ../src/dlt_pipelines/gold_dlt_pipeline/transformation/**
+      schema: gold
+      catalog: stock_data_cata
+      serverless: true
+      root_path: ../src/dlt_pipelines/gold_dlt_pipeline
+      environment:
+        dependencies:
+          - yfinance==0.2.65

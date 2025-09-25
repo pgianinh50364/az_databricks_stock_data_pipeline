@@ -1,0 +1,22 @@
+resources:
+  pipelines:
+    pipeline_silver_run:
+      name: silver_run
+      libraries:
+        - glob:
+            include: ../src/dlt_pipelines/silver_dlt_pipeline/transformation/**
+      schema: silver
+      continuous: false
+      development: false
+      channel: CURRENT
+      catalog: stock_data_cata
+      root_path: ../src/dlt_pipelines/silver_dlt_pipeline
+      configuration:
+        spark.databricks.delta.properties.defaults.autoOptimize.optimizeWrite: "true"
+        spark.databricks.delta.properties.defaults.autoOptimize.autoCompact: "true"
+      environment:
+        dependencies:
+          - yfinance==0.2.65
+      permissions:
+      - level: CAN_MANAGE
+        user_name: "${workspace.current_user.userName}"
