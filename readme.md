@@ -34,7 +34,7 @@ A comprehensive **Azure-based data engineering solution** that ingests, processe
 
 ## 🏗️ Architecture Overview
 
-[architecture](docs\architecture.png)
+[architecture](https://github.com/pgianinh50364/az_databricks_stock_data_pipeline/blob/b417d9431bce568b6fd8def3d9b86ad191a07d03/docs/architecture.png)
 
 ## � Security-First Design
 
